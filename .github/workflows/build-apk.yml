@@ -1,0 +1,71 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install required SDK packages
+        run: |
+          sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Locate project root
+        id: find_root
+        run: |
+          SETTINGS_FILE=$(find "$GITHUB_WORKSPACE" -maxdepth 4 -name "settings.gradle" | head -n 1)
+          PROJECT_ROOT=$(dirname "$SETTINGS_FILE")
+          echo "Found Gradle project at: $PROJECT_ROOT"
+          echo "root=$PROJECT_ROOT" >> "$GITHUB_OUTPUT"
+
+      - name: Generate Gradle Wrapper (pins exact Gradle version, ignores runner default)
+        working-directory: ${{ steps.find_root.outputs.root }}
+        run: gradle wrapper --gradle-version 8.4 --distribution-type all --no-daemon
+
+      - name: Build debug APK
+        working-directory: ${{ steps.find_root.outputs.root }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Locate APK
+        id: find_apk
+        run: |
+          APK_PATH=$(find "${{ steps.find_root.outputs.root }}/app/build/outputs/apk/debug" -name "*.apk" | head -n 1)
+          echo "apk_path=$APK_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SentinelBotControl-debug-apk
+          path: ${{ steps.find_apk.outputs.apk_path }}
+
+      - name: Publish downloadable Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-build-${{ github.run_number }}
+          name: "SentinelBot Control - build #${{ github.run_number }}"
+          body: "APK ساخته‌شده به‌صورت خودکار از آخرین کامیت. فایل APK زیر را دانلود و روی گوشی نصب کنید."
+          files: ${{ steps.find_apk.outputs.apk_path }}
