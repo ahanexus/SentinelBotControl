@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- backgrounds -->
+    <color name="bg_root">#0A0E17</color>
+    <color name="bg_gradient_start">#0B0F1E</color>
+    <color name="bg_gradient_mid">#131A2E</color>
+    <color name="bg_gradient_end">#1B1030</color>
+    <color name="bg_card">#161C2C</color>
+    <color name="bg_card_elevated">#202942</color>
+    <color name="bg_card_soft">#141A28</color>
+
+    <!-- core brand accents -->
+    <color name="accent_cyan">#00E5FF</color>
+    <color name="accent_cyan_dim">#0F5C66</color>
+    <color name="accent_purple">#8A5CFF</color>
+    <color name="accent_green">#00FFA3</color>
+    <color name="accent_red">#FF3B5C</color>
+    <color name="accent_amber">#FFB020</color>
+
+    <!-- mode button palette (solid, high-contrast) -->
+    <color name="mode_normal">#4C8DFF</color>
+    <color name="mode_happy">#FFD23F</color>
+    <color name="mode_sad">#3EC6FF</color>
+    <color name="mode_angry">#FF5A36</color>
+    <color name="mode_friendly">#FF6FB5</color>
+    <color name="mode_lowbat">#FFB020</color>
+    <color name="mode_guard">#8A5CFF</color>
+    <color name="mode_rescue">#00C2A8</color>
+    <color name="mode_stuck">#FF8A3D</color>
+    <color name="mode_danger">#FF2D55</color>
+    <color name="mode_clear">#2EE6A6</color>
+
+    <!-- duotone circle backgrounds (≈25% alpha of the mode color), used behind
+         the round mode-icon buttons so the icon itself pops in full color -->
+    <color name="mode_normal_bg">#404C8DFF</color>
+    <color name="mode_happy_bg">#40FFD23F</color>
+    <color name="mode_sad_bg">#403EC6FF</color>
+    <color name="mode_angry_bg">#40FF5A36</color>
+    <color name="mode_friendly_bg">#40FF6FB5</color>
+    <color name="mode_lowbat_bg">#40FFB020</color>
+    <color name="mode_guard_bg">#408A5CFF</color>
+    <color name="mode_rescue_bg">#4000C2A8</color>
+    <color name="mode_stuck_bg">#40FF8A3D</color>
+    <color name="mode_danger_bg">#40FF2D55</color>
+    <color name="mode_clear_bg">#402EE6A6</color>
+
+    <!-- log entry type colors -->
+    <color name="log_info">#00E5FF</color>
+    <color name="log_success">#2EE6A6</color>
+    <color name="log_warning">#FFB020</color>
+    <color name="log_error">#FF3B5C</color>
+
+    <color name="accent_cyan_bg">#4000E5FF</color>
+
+    <!-- text -->
+    <color name="text_primary">#F1F5F9</color>
+    <color name="text_secondary">#8B96AC</color>
+    <color name="text_on_light">#12141C</color>
+
+    <color name="divider">#28324A</color>
+    <color name="grid_line">#242E48</color>
+</resources>

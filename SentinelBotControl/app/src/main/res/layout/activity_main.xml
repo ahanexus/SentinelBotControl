@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@drawable/bg_app_gradient">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dashboardScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="88dp">
+
+            <!-- ===== Top App Bar ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr"
+                android:gravity="center_vertical"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/menuButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="☰"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_primary"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AHA "
+                            android:textColor="@color/text_primary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Robot"
+                            android:textColor="@color/accent_cyan"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/currentModeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="حالت: عادی"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/settingsButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="⚙"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_primary"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+            </LinearLayout>
+
+            <!-- ===== Connection Card ===== -->
+            <LinearLayout
+                android:id="@+id/connectionCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_card_ripple"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <View
+                        android:id="@+id/statusGlow"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_glow_circle" />
+
+                    <View
+                        android:id="@+id/statusCircleBg"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_status_circle" />
+
+                    <TextView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="🅱️"
+                        android:textSize="18sp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/statusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status_disconnected"
+                        android:textColor="@color/accent_red"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/deviceNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/connection_hint_tap"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_battery" />
+
+                    <TextView
+                        android:id="@+id/batteryText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="—"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Radar Card ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="@string/section_radar" />
+
+                <com.sentinel.botcontrol.RadarView
+                    android:id="@+id/radarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_marginTop="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/radarStatusPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="ltr"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_pill"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/radarStatusIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="❗"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/radarStatusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/radar_no_data"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Sensor Status Row ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="@string/section_sensors" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="ltr"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_pill"
+                        android:padding="10dp">
+
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                            <View android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/accent_cyan_bg" />
+                            <TextView android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:gravity="center" android:text="📏" android:textSize="16sp" />
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sensor_distance" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="6dp" />
+                        <TextView android:id="@+id/sensorDistanceValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="13sp" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_pill"
+                        android:padding="10dp">
+
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_glow_circle" app:tint="@color/mode_guard" />
+                            <View android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_guard_bg" />
+                            <TextView android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:gravity="center" android:text="🛡" android:textSize="16sp" />
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sensor_obstacle" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="6dp" />
+                        <TextView android:id="@+id/sensorObstacleValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="13sp" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/bg_pill"
+                        android:padding="10dp">
+
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_glow_circle" app:tint="@color/mode_danger" />
+                            <View android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_danger_bg" />
+                            <TextView android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:gravity="center" android:text="🔥" android:textSize="16sp" />
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sensor_flame" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="6dp" />
+                        <TextView android:id="@+id/sensorFlameValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="13sp" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Mode Buttons (circular icons) ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="@string/section_modes" />
+
+                <!-- Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="ltr"
+                    android:layout_marginTop="12dp">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnHappy" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_happy_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_happy" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_happy" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnAngry" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_angry_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_angry" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_angry" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnSad" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_sad_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_sad" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_sad" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnClearAlarm" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_clear_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_safe" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="امن" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="ltr"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnFriendly" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_friendly_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_friendly" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_friendly" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnGuard" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_guard_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_guard" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_guard" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnRescue" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_rescue_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_rescue" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_rescue" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnDanger" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_danger_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_danger" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_danger" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <FrameLayout android:id="@+id/btnNormal" android:layout_width="58dp" android:layout_height="58dp" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_normal_bg" android:clickable="true" android:focusable="true"><ImageView android:layout_width="30dp" android:layout_height="30dp" android:layout_gravity="center" android:src="@drawable/ic_mode_playful" /></FrameLayout>
+                        <TextView style="@style/ModeCaption" android:text="@string/mode_normal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===== Movement D-Pad ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_gravity="start"
+                    android:text="@string/section_movement" />
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:columnCount="3"
+                    android:rowCount="3">
+
+                    <Space android:layout_width="88dp" android:layout_height="88dp" android:layout_row="0" android:layout_column="0" />
+                    <FrameLayout android:layout_width="88dp" android:layout_height="88dp" android:layout_row="0" android:layout_column="1">
+                        <View android:layout_width="88dp" android:layout_height="88dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                        <FrameLayout android:id="@+id/btnForward" android:layout_width="72dp" android:layout_height="72dp" android:layout_gravity="center" android:background="@drawable/bg_dpad_button" android:clickable="true" android:focusable="true">
+                            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:src="@drawable/ic_arrow_up" />
+                        </FrameLayout>
+                    </FrameLayout>
+                    <Space android:layout_width="88dp" android:layout_height="88dp" android:layout_row="0" android:layout_column="2" />
+
+                    <FrameLayout android:layout_width="88dp" android:layout_height="88dp" android:layout_row="1" android:layout_column="0">
+                        <View android:layout_width="88dp" android:layout_height="88dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                        <FrameLayout android:id="@+id/btnLeft" android:layout_width="72dp" android:layout_height="72dp" android:layout_gravity="center" android:background="@drawable/bg_dpad_button" android:clickable="true" android:focusable="true">
+                            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:src="@drawable/ic_arrow_left" />
+                        </FrameLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="88dp" android:layout_height="88dp" android:layout_row="1" android:layout_column="1">
+                        <View android:layout_width="88dp" android:layout_height="88dp" android:background="@drawable/bg_glow_circle" app:tint="@color/mode_danger" />
+                        <FrameLayout android:id="@+id/btnStop" android:layout_width="72dp" android:layout_height="72dp" android:layout_gravity="center" android:background="@drawable/bg_dpad_stop" android:clickable="true" android:focusable="true">
+                            <ImageView android:layout_width="26dp" android:layout_height="26dp" android:layout_gravity="center" android:src="@drawable/ic_stop_square" />
+                        </FrameLayout>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="88dp" android:layout_height="88dp" android:layout_row="1" android:layout_column="2">
+                        <View android:layout_width="88dp" android:layout_height="88dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                        <FrameLayout android:id="@+id/btnRight" android:layout_width="72dp" android:layout_height="72dp" android:layout_gravity="center" android:background="@drawable/bg_dpad_button" android:clickable="true" android:focusable="true">
+                            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:src="@drawable/ic_arrow_right" />
+                        </FrameLayout>
+                    </FrameLayout>
+
+                    <Space android:layout_width="88dp" android:layout_height="88dp" android:layout_row="2" android:layout_column="0" />
+                    <FrameLayout android:layout_width="88dp" android:layout_height="88dp" android:layout_row="2" android:layout_column="1">
+                        <View android:layout_width="88dp" android:layout_height="88dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                        <FrameLayout android:id="@+id/btnBackward" android:layout_width="72dp" android:layout_height="72dp" android:layout_gravity="center" android:background="@drawable/bg_dpad_button" android:clickable="true" android:focusable="true">
+                            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:src="@drawable/ic_arrow_down" />
+                        </FrameLayout>
+                    </FrameLayout>
+                    <Space android:layout_width="88dp" android:layout_height="88dp" android:layout_row="2" android:layout_column="2" />
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- ===== Auto Mode Toggle ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="14dp">
+
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                    <View android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_cyan" />
+                    <View android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/accent_cyan_bg" />
+                    <TextView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="🤖"
+                        android:textSize="18sp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/section_auto"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/auto_description"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/autoModeSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:thumbTint="@color/text_primary"
+                    app:trackTint="@color/accent_cyan_dim" />
+            </LinearLayout>
+
+            <!-- ===== Log Console ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:text="@string/section_log" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <ScrollView
+                        android:id="@+id/logScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@color/bg_gradient_start">
+
+                        <LinearLayout
+                            android:id="@+id/logContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="6dp"
+                            android:divider="@drawable/divider_thin"
+                            android:showDividers="middle" />
+                    </ScrollView>
+
+                    <LinearLayout
+                        android:id="@+id/logEmptyState"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📋"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/log_empty_title"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/log_empty_subtitle"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sensorsScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="88dp">
+
+            <!-- ===== Sensors Screen Header ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr"
+                android:gravity="center_vertical"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/sensorsMenuButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="☰"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_primary"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="سنسورها"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sensorsRefreshButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="🔄"
+                    android:textSize="18sp"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+            </LinearLayout>
+
+            <!-- ===== Overall Status Banner ===== -->
+            <LinearLayout
+                android:id="@+id/sensorsOverallBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginBottom="10dp">
+
+                <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                    <View android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_glow_circle" app:tint="@color/accent_green" />
+                    <View android:id="@+id/sensorsOverallCircle" android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:background="@drawable/bg_mode_circle" android:backgroundTint="@color/mode_clear" />
+                    <TextView android:id="@+id/sensorsOverallIcon" android:layout_width="34dp" android:layout_height="34dp" android:layout_gravity="center" android:gravity="center" android:text="✓" android:textColor="#FFFFFF" android:textSize="16sp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="وضعیت سنسورها"
+                        android:textColor="@color/text_primary"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/sensorsOverallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="ابتدا به ربات متصل شوید"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📏" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="سنسور فاصله" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/distanceValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/distanceBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/distanceStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/distanceStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="اولتراسونیک" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/ultrasonicSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/text_primary"
+                            app:trackTint="@color/accent_cyan_dim" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🛡" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="وضعیت مانع" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/obstacleValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/obstacleBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/obstacleStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/obstacleStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔥" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="سنسور شعله" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/flameValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/flameBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/flameStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/flameStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="شعله" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/flameSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/text_primary"
+                            app:trackTint="@color/accent_cyan_dim" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🚶" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="سنسور حرکت" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/pirValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/pirBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/pirStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/pirStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="PIR" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/pirSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/text_primary"
+                            app:trackTint="@color/accent_cyan_dim" />
+                    </LinearLayout>
+                </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⬇" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="سنسور لبه" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/edgeValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/edgeBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/edgeStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/edgeStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="لبه" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/edgeSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/text_primary"
+                            app:trackTint="@color/accent_cyan_dim" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎯" android:textSize="18sp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" android:text="سروو رادار" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/servoValue2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="--" android:textColor="@color/text_primary" android:textStyle="bold" android:textSize="20sp" />
+
+                    <ProgressBar
+                        android:id="@+id/servoBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/accent_cyan"
+                        android:progressBackgroundTint="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="6dp">
+
+                        <TextView android:id="@+id/servoStatusText2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="--" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <TextView android:id="@+id/servoStatusIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp">
+
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="سروو" android:textColor="@color/text_secondary" android:textSize="11sp" />
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/servoSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:thumbTint="@color/text_primary"
+                            app:trackTint="@color/accent_cyan_dim" />
+                    </LinearLayout>
+                </LinearLayout>
+                </LinearLayout>
+
+            <!-- ===== Distance Chart ===== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="14dp"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    style="@style/SectionLabel"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:text="نمودار فاصله (آخر ۳۰ ثانیه)" />
+
+                <com.sentinel.botcontrol.DistanceChartView
+                    android:id="@+id/distanceChartView"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="10dp"
+                    android:layoutDirection="ltr" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ===== Animated sensor alert banner (overlay, hidden by default, tap to clear) ===== -->
+    <LinearLayout
+        android:id="@+id/alertBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:background="@color/mode_danger"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:elevation="12dp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/alertIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚠"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/alertText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="هشدار"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/alert_tap_to_clear"
+            android:textColor="#DDFFFFFF"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- ===== Bottom Navigation (visual — Dashboard is the only live screen for now) ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@color/bg_card"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="16dp">
+
+        <LinearLayout android:id="@+id/navDashboard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true" android:background="?attr/selectableItemBackgroundBorderless">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="18sp" />
+            <TextView android:id="@+id/navDashboardLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_dashboard" android:textColor="@color/accent_cyan" android:textSize="11sp" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navControl" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true" android:background="?attr/selectableItemBackgroundBorderless">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎮" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_control" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navSensors" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true" android:background="?attr/selectableItemBackgroundBorderless">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📡" android:textSize="18sp" />
+            <TextView android:id="@+id/navSensorsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_sensors" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/navSettings" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true" android:background="?attr/selectableItemBackgroundBorderless">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙" android:textSize="18sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nav_settings" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_marginTop="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

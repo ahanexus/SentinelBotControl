@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AHA</string>
+    <string name="app_tagline">کنترل هوشمند ربات</string>
+
+    <string name="status_disconnected">قطع شده</string>
+    <string name="status_connecting">در حال اتصال…</string>
+    <string name="status_connected">متصل</string>
+    <string name="connection_hint_tap">برای اتصال ضربه بزنید</string>
+    <string name="btn_connect">اتصال</string>
+    <string name="btn_disconnect">قطع اتصال</string>
+
+    <string name="section_modes">حالت‌های چهره و رفتار</string>
+    <string name="section_movement">کنترل حرکت</string>
+    <string name="section_auto">حالت خودکار</string>
+    <string name="section_radar">رادار / سنسور فاصله</string>
+    <string name="section_log">گزارش‌ها</string>
+    <string name="section_sensors">وضعیت سنسورها</string>
+
+    <string name="auto_description">ربات به‌صورت خودکار حرکت کند</string>
+
+    <!-- Mode captions matched to the AHA mockup. Underlying firmware command is
+         unchanged from the original label — see button IDs in the layout. -->
+    <string name="mode_normal">بازیگوش</string>
+    <string name="mode_happy">خوشحال</string>
+    <string name="mode_sad">غمگین</string>
+    <string name="mode_angry">عصبی</string>
+    <string name="mode_guard">نکته‌دان</string>
+    <string name="mode_rescue">نجات</string>
+    <string name="mode_friendly">دوستانه</string>
+    <string name="mode_danger">هشدار خطر</string>
+    <string name="mode_lowbat">خواب‌آلود</string>
+    <string name="mode_stuck">ترس</string>
+
+    <string name="sensor_distance">فاصله</string>
+    <string name="sensor_obstacle">مانع</string>
+    <string name="sensor_flame">شعله</string>
+
+    <string name="radar_no_data">هیچ داده‌ای دریافت نشد</string>
+    <string name="radar_safe">محدوده ایمن</string>
+    <string name="radar_warning">مانع نزدیک است!</string>
+
+    <string name="alert_tap_to_clear">برای پاک‌کردن هشدار لمس کنید</string>
+
+    <string name="log_empty_title">هیچ گزارشی موجود نیست</string>
+    <string name="log_empty_subtitle">ابتدا دستگاه را متصل کنید</string>
+
+    <string name="nav_dashboard">داشبورد</string>
+    <string name="nav_control">کنترل</string>
+    <string name="nav_sensors">سنسورها</string>
+    <string name="nav_settings">تنظیمات</string>
+    <string name="nav_coming_soon">این بخش به‌زودی اضافه می‌شود</string>
+
+    <string name="dialog_pick_device_title">انتخاب ماژول بلوتوث (HC-05)</string>
+    <string name="dialog_no_devices">هیچ دستگاه جفت‌شده‌ای یافت نشد.\nابتدا از تنظیمات گوشی HC-05 را پیر (Pair) کنید.</string>
+</resources>
